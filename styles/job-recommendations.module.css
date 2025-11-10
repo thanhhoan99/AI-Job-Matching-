@@ -1,0 +1,175 @@
+.cardShadow {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cardDesc {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.refreshBtn {
+  background: #f3f4f6;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.refreshBtn:hover { background: #e5e7eb; }
+
+
+/* .jobGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+} */
+.jobGrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1200px) {
+  .jobGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .jobGrid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+.jobCard {
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.25s ease;
+}
+.jobCard:hover {
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.jobTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.company {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.jobMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+.jobMeta svg { margin-right: 4px; }
+
+.skillTags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.skillTag {
+  background: #eef2ff;
+  color: #4338ca;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+}
+
+.matchTag {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  margin-left: 6px;
+  color: #fff;
+  font-weight: 500;
+}
+.bgGreen { background: #16a34a; }
+.bgBrand { background: #2563eb; }
+.bgOrange { background: #f97316; }
+.bgMuted { background: #9ca3af; }
+
+
+.viewBtn {
+  margin-top: 12px;
+  background: #83a8f7;
+  color: white;
+  text-align: center;
+  padding: 8px 0;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: 0.2s;
+}
+.viewBtn:hover { background: #1d4ed8; }
+
+.footer {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.loadMore {
+  border: 1px solid #2563eb;
+  background: white;
+  color: #2563eb;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.loadMore:hover {
+  background: #2563eb;
+  color: white;
+}
+
+.loadingText {
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}

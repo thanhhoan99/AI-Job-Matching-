@@ -1,0 +1,223 @@
+/* ApplicantDashboard.module.css */
+
+/* ==== Layout Basics ==== */
+.sectionBox {
+    padding-left: 70px;
+      padding-right: 70px;
+  padding-bottom: 50px;
+   padding-top: 50px;
+}
+
+.boxHeading {
+  margin-bottom: 20px;
+}
+
+.breadcrumbs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.breadcrumbs li {
+  font-size: 14px;
+  color: #555;
+}
+
+.breadcrumbs a {
+  text-decoration: none;
+  color: #0d6efd;
+  transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+  color: #084298;
+}
+
+/* ==== Cards & Grids ==== */
+.cardGrid {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.cardGrid:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.cardIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 12px;
+}
+
+.cardTitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cardSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ==== CV List ==== */
+.cvList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cvItem {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.cvItem:hover {
+  border-color: #a5b4fc;
+  box-shadow: 0 3px 10px rgba(99, 102, 241, 0.1);
+}
+
+.cvName {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.cvDate {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.btnTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* ==== Application List ==== */
+.appItem {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 10px;
+  background: #fff;
+  transition: all 0.2s ease;
+}
+
+.appItem:hover {
+  border-color: #a7f3d0;
+  box-shadow: 0 3px 10px rgba(16, 185, 129, 0.1);
+}
+
+.appTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.appCompany {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.appStatus {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 3px 8px;
+  color: #fff;
+}
+
+.statusPending {
+  background: #facc15;
+}
+.statusReviewing {
+  background: #38bdf8;
+}
+.statusInterview {
+  background: #a78bfa;
+}
+.statusOffered {
+  background: #34d399;
+}
+.statusDefault {
+  background: #9ca3af;
+}
+
+/* ==== Progress Bar ==== */
+.progressWrapper {
+  margin-top: 10px;
+}
+
+.progressOuter {
+  width: 100%;
+  height: 10px;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progressInner {
+  height: 100%;
+  background: #4f46e5;
+  text-align: right;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 600;
+  padding-right: 6px;
+  line-height: 10px;
+}
+
+/* ==== Buttons ==== */
+.btnPrimary {
+  background: #4f46e5;
+  color: #fff;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.btnPrimary:hover {
+  background: #3730a3;
+}
+
+.btnOutline {
+  border: 1px solid #4f46e5;
+  color: #4f46e5;
+  border-radius: 10px;
+  padding: 8px 16px;
+  transition: all 0.2s ease;
+}
+
+.btnOutline:hover {
+  background: #eef2ff;
+}

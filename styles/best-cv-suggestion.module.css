@@ -1,0 +1,619 @@
+/* components/applicant/best-cv-suggestion.module.css */
+.card {
+  border: 1px solid #e0e6f7;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px -5px rgba(10, 42, 105, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.card:hover {
+  box-shadow: 0px 8px 30px -5px rgba(10, 42, 105, 0.12);
+  transform: translateY(-2px);
+}
+
+.header {
+  background: linear-gradient(135deg, #3c65f5 0%, #2b50d1 100%);
+  color: white;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.description {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.content {
+  padding: 24px;
+  background: #ffffff;
+}
+
+/* Error State */
+.errorAlert {
+  background: linear-gradient(135deg, #fee 0%, #ffe6e6 100%);
+  border: 1px solid #fcc;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+/* Initial State */
+.initialState {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.promoBox {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+  border: 1px solid #e0e6f7;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.promoIcon {
+  width: 48px;
+  height: 48px;
+  color: #3c65f5;
+  margin: 0 auto 16px;
+}
+
+.promoTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 8px;
+}
+
+.promoDescription {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: #4f5e64;
+  line-height: 1.5;
+}
+
+.analyzeButton {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #3c65f5 0%, #2b50d1 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.analyzeButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 20px rgba(60, 101, 245, 0.3);
+}
+
+/* Loading State */
+.loadingState {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e6f7;
+  border-top: 3px solid #3c65f5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+.loadingText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: #4f5e64;
+}
+
+.loadingSubtext {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 12px;
+  color: #a0abb8;
+  margin-top: 4px;
+}
+
+/* Best CV Recommendation */
+.bestCVAlert {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  border: 1px solid #b3e0ff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.bestCVHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.bestCVInfo {
+  flex: 1;
+}
+
+.bestCVName {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #05264e;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scoreBadge {
+  background: linear-gradient(135deg, #3c65f5 0%, #2b50d1 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.confidenceBadge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+.confidenceHigh {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+  border-color: rgba(76, 175, 80, 0.3);
+}
+
+.confidenceMedium {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ff9800;
+  border-color: rgba(255, 193, 7, 0.3);
+}
+
+.confidenceLow {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border-color: rgba(244, 67, 54, 0.3);
+}
+
+.selectButton {
+  padding: 8px 16px;
+  background: #3c65f5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.selectButton:hover {
+  background: #2b50d1;
+  transform: translateY(-1px);
+}
+
+.selectButton:disabled {
+  background: #a0abb8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.selectButton.selected {
+  background: #4caf50;
+}
+
+.reasonsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.reasonItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 13px;
+  color: #4f5e64;
+}
+
+.reasonDot {
+  width: 6px;
+  height: 6px;
+  background: #3c65f5;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+/* CV Comparison */
+.comparisonSection {
+  margin-bottom: 24px;
+}
+
+.comparisonTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cvCard {
+  padding: 16px;
+  border: 1px solid #e0e6f7;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  transition: all 0.3s ease;
+}
+
+.cvCard.best {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  border-color: #b3e0ff;
+}
+
+.cvCard:hover {
+  border-color: #3c65f5;
+  box-shadow: 0px 4px 12px rgba(60, 101, 245, 0.1);
+}
+
+.cvHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.cvName {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #05264e;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bestBadge {
+  background: linear-gradient(135deg, #ffd700 0%, #ffa000 100%);
+  color: #05264e;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cvActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.score {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.score.high {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.score.medium {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ff9800;
+}
+
+.score.low {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+.cvButton {
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid #e0e6f7;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cvButton:hover {
+  background: #3c65f5;
+  color: white;
+  border-color: #3c65f5;
+}
+
+.cvButton:disabled {
+  background: #a0abb8;
+  color: white;
+  border-color: #a0abb8;
+  cursor: not-allowed;
+}
+
+.cvAnalysis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.strengths, .weaknesses {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.strengths {
+  background: rgba(76, 175, 80, 0.05);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.weaknesses {
+  background: rgba(244, 67, 54, 0.05);
+  border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.analysisTitle {
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.strengths .analysisTitle {
+  color: #4caf50;
+}
+
+.weaknesses .analysisTitle {
+  color: #f44336;
+}
+
+.analysisList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.analysisItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 2px 0;
+  line-height: 1.4;
+}
+
+.analysisDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.strengths .analysisDot {
+  background: #4caf50;
+}
+
+.weaknesses .analysisDot {
+  background: #f44336;
+}
+
+.recommendation {
+  margin-top: 12px;
+  padding: 8px;
+  background: rgba(33, 150, 243, 0.05);
+  border: 1px solid rgba(33, 150, 243, 0.2);
+  border-radius: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+/* Suggestions */
+.suggestionsSection {
+  margin-bottom: 24px;
+}
+
+.suggestionsTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suggestionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background: linear-gradient(135deg, #fff9f3 0%, #fff3e0 100%);
+  border: 1px solid #ffe0b2;
+  border-radius: 8px;
+}
+
+.suggestionIcon {
+  width: 16px;
+  height: 16px;
+  color: #ff9800;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.suggestionText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 13px;
+  color: #4f5e64;
+  line-height: 1.4;
+}
+
+/* Summary */
+.summarySection {
+  padding: 16px;
+  background: linear-gradient(135deg, #f8faff 0%, #f0f4ff 100%);
+  border: 1px solid #e0e6f7;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.summaryTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 8px;
+}
+
+.summaryText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 13px;
+  color: #4f5e64;
+  line-height: 1.5;
+}
+
+/* Retry Button */
+.retryButton {
+  width: 100%;
+  padding: 12px 20px;
+  background: transparent;
+  color: #3c65f5;
+  border: 1px solid #e0e6f7;
+  border-radius: 8px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.retryButton:hover {
+  background: #3c65f5;
+  color: white;
+  border-color: #3c65f5;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 16px;
+  }
+  
+  .bestCVHeader {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .cvHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .cvActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .cvAnalysis {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 16px;
+  }
+  
+  .promoBox {
+    padding: 16px;
+  }
+  
+  .bestCVAlert {
+    padding: 16px;
+  }
+  
+  .suggestionItem {
+    padding: 10px;
+  }
+}

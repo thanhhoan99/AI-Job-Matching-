@@ -1,0 +1,280 @@
+/* ApplyButton.module.css */
+
+/* --- CSS Variables for Easy Theming --- */
+/* Add these variables to the top of your global CSS file */
+
+
+/* ApplyButton.module.css */
+
+/* --- REMOVE THE :root BLOCK FROM THIS FILE --- */
+
+/* --- Dialog Container --- */
+.dialogContent {
+  background-color: white;
+  border-radius: 22px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+
+/* ... the rest of the file remains the same */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Header --- */
+.dialogHeader {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.dialogTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* --- Tabs --- */
+.tabsList {
+  background-color: var(--background-light);
+  border-radius: var(--border-radius);
+  padding: 4px;
+}
+
+.tabTrigger {
+  color: var(--text-muted-color);
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all var(--transition-speed) ease;
+  position: relative;
+}
+
+.tabTrigger[data-state="active"] {
+  background-color: white;
+  color: var(--primary-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* --- Form Elements --- */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+/* --- Select Dropdown --- */
+.selectTrigger {
+  border: 1px solid var(--border-color);
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.selectTrigger:hover {
+  border-color: var(--primary-color);
+}
+
+.selectTrigger:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+/* --- File Upload Area --- */
+.fileUploadArea {
+  border: 2px dashed var(--border-color);
+  background-color: var(--background-light);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+}
+
+.fileUploadArea:hover {
+  border-color: var(--primary-color);
+  background-color: #eef5ff;
+}
+
+.fileUploadIcon {
+  color: var(--text-muted-color);
+  transition: transform var(--transition-speed) ease;
+}
+
+.fileUploadArea:hover .fileUploadIcon {
+  transform: scale(1.1);
+  color: var(--primary-color);
+}
+
+.filePreview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #eaf6ec; /* Light Green */
+  border: 1px solid #c3e6cb;
+  border-radius: var(--border-radius);
+  color: #155724;
+}
+
+.removeFileButton {
+  color: var(--error-color);
+  background-color: transparent;
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+.removeFileButton:hover {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+/* --- Alerts --- */
+.errorAlert {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  border-radius: var(--border-radius);
+}
+
+.matchAlert {
+  border-radius: var(--border-radius);
+  margin-top: 1.5rem;
+}
+
+/* --- Buttons --- */
+.mainApplyButton {
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 600;
+  padding: 1.5rem 1rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  transition: all var(--transition-speed) ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mainApplyButton:hover:not(:disabled) {
+  background-color: var(--primary-hover-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mainApplyButton:disabled {
+  background-color: var(--background-highlight);
+  cursor: not-allowed;
+}
+
+/* --- Loading Spinner --- */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 0.5rem;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.applyButton {
+  width: 90px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  font-size: 0.8.5rem;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1, #14b8a6); /* tím -> teal */
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.3);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: capitalize;
+}
+
+/* Hover: sáng hơn, nâng nhẹ */
+.applyButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(99, 102, 241, 0.35);
+  filter: brightness(1.05);
+}
+
+/* Active (bấm giữ) */
+.applyButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(99, 102, 241, 0.25);
+  filter: brightness(0.95);
+}
+
+/* Focus (tab vào hoặc click) */
+.applyButton:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.2),
+    0 6px 18px rgba(99, 102, 241, 0.3);
+}
+
+/* Disabled */
+.applyButton:disabled {
+  background: linear-gradient(135deg, #a1a1aa, #d4d4d8);
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Optional: icon trong nút */
+.applyButton .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  transform: translateY(1px);
+}
+.btn-apply-now {
+   width: 90px;
+  background: linear-gradient(135deg, #a8a8a8, #d4d4d4);
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.6rem 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  letter-spacing: 0.2px;
+  cursor: not-allowed;
+  opacity: 0.85;
+  text-transform: capitalize;
+}
+
+.btn-apply-now.disabled,
+.btn-apply-now:disabled {
+  background: linear-gradient(135deg, #9ca3af, #d1d5db); /* xám gradient */
+  color: #f3f4f6 !important;
+  opacity: 0.9;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-apply-now:hover {
+  transform: translateY(-1px);
+  background: linear-gradient(135deg, #b0b0b0, #e5e5e5);
+}
+
+.btn-apply-now:active {
+  transform: translateY(0);
+}

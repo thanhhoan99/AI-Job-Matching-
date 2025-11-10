@@ -1,0 +1,490 @@
+/* components/applicant/cv-job-matching.module.css */
+.card {
+  border: 1px solid #e0e6f7;
+  border-radius: 16px;
+  box-shadow: 0px 4px 20px -5px rgba(10, 42, 105, 0.08);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+
+.card:hover {
+  box-shadow: 0px 8px 30px -5px rgba(10, 42, 105, 0.12);
+  transform: translateY(-2px);
+}
+
+.header {
+  background: linear-gradient(135deg, #3c65f5 0%, #2b50d1 100%);
+  color: white;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0V0zm20 20h20v20H20V20zM0 20h20v20H0V20z'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.description {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+}
+
+.content {
+  padding: 24px;
+  background: #ffffff;
+}
+
+/* Score Section */
+.scoreSection {
+  text-align: center;
+  padding: 20px 0;
+  background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  border: 1px solid #e0e6f7;
+}
+
+.scoreMain {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 56px;
+  font-weight: 800;
+  color: #05264e;
+  line-height: 1;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #3c65f5 0%, #05264e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.scoreBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.scoreBadge.excellent {
+  background: rgba(60, 101, 245, 0.1);
+  color: #3c65f5;
+  border: 1px solid rgba(60, 101, 245, 0.3);
+}
+
+.scoreBadge.good {
+  background: rgba(255, 193, 7, 0.1);
+  color: #ff9800;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.scoreBadge.poor {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.scoreExplanation {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: #4f5e64;
+  line-height: 1.5;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.progress {
+  height: 6px;
+  background: #e0e6f7;
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progressFill.high {
+  background: linear-gradient(90deg, #3c65f5 0%, #2b50d1 100%);
+}
+
+.progressFill.medium {
+  background: linear-gradient(90deg, #ff9800 0%, #f57c00 100%);
+}
+
+.progressFill.low {
+  background: linear-gradient(90deg, #f44336 0%, #d32f2f 100%);
+}
+
+/* Progress Grid */
+.progressGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.progressItem {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid #e0e6f7;
+  transition: all 0.3s ease;
+}
+
+.progressItem:hover {
+  border-color: #3c65f5;
+  box-shadow: 0px 4px 12px rgba(60, 101, 245, 0.1);
+}
+
+.progressLabel {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #05264e;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progressValue {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.progressValue.high {
+  color: #3c65f5;
+}
+
+.progressValue.medium {
+  color: #ff9800;
+}
+
+.progressValue.low {
+  color: #f44336;
+}
+
+/* Skills Analysis */
+.skillsAnalysis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.skillsColumn {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e6f7;
+}
+
+.skillsTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.skillsTitle.matching {
+  color: #3c65f5;
+}
+
+.skillsTitle.missing {
+  color: #f44336;
+}
+
+.skillsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skillTag {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.skillTag.matching {
+  background: rgba(60, 101, 245, 0.1);
+  color: #3c65f5;
+  border: 1px solid rgba(60, 101, 245, 0.2);
+}
+
+.skillTag.matching:hover {
+  background: rgba(60, 101, 245, 0.2);
+  transform: translateY(-1px);
+}
+
+.skillTag.missing {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.2);
+}
+
+.skillTag.missing:hover {
+  background: rgba(244, 67, 54, 0.2);
+  transform: translateY(-1px);
+}
+
+/* Experience Analysis */
+.experienceAnalysis {
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e0e6f7;
+  margin-bottom: 24px;
+}
+
+.experienceTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 16px;
+}
+
+.experienceGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.experienceItem {
+  text-align: center;
+  padding: 12px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e6f7;
+}
+
+.experienceLabel {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 12px;
+  color: #4f5e64;
+  margin-bottom: 4px;
+}
+
+.experienceValue {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #05264e;
+}
+
+.experienceStatus {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  margin-top: 4px;
+}
+
+.experienceStatus.met {
+  background: rgba(76, 175, 80, 0.1);
+  color: #4caf50;
+}
+
+.experienceStatus.notMet {
+  background: rgba(244, 67, 54, 0.1);
+  color: #f44336;
+}
+
+/* Suggestions */
+.suggestionsSection {
+  background: linear-gradient(135deg, #fff9f3 0%, #fff3e0 100%);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #ffe0b2;
+  margin-bottom: 24px;
+}
+
+.suggestionsTitle {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #05264e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.suggestionsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestionItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 224, 178, 0.5);
+}
+
+.suggestionItem:last-child {
+  border-bottom: none;
+}
+
+.suggestionIcon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255, 152, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.suggestionText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: #4f5e64;
+  line-height: 1.5;
+}
+
+/* Action Button */
+.actionButton {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, #3c65f5 0%, #2b50d1 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.actionButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 8px 20px rgba(60, 101, 245, 0.3);
+}
+
+.actionButton:active {
+  transform: translateY(0);
+}
+
+/* Loading State */
+.loadingState {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e0e6f7;
+  border-top: 3px solid #3c65f5;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+.loadingText {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 14px;
+  color: #4f5e64;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    padding: 16px;
+  }
+  
+  .skillsAnalysis {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .progressGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .experienceGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .scoreMain {
+    font-size: 48px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 20px 16px;
+  }
+  
+  .skillsColumn {
+    padding: 16px;
+  }
+  
+  .experienceAnalysis {
+    padding: 16px;
+  }
+  
+  .suggestionsSection {
+    padding: 16px;
+  }
+}

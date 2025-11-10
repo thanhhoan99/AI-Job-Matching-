@@ -1,0 +1,132 @@
+/* ==========================
+   Profile Form Styles
+   ========================== */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeIn 0.35s ease-in-out;
+}
+
+/* CARD */
+.card {
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* HEADER */
+.cardHeader {
+  padding: 1.5rem 1.75rem;
+  border-bottom: 1px solid #f1f5f9;
+  background: linear-gradient(to right, #f9fafb, #ffffff);
+}
+
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.cardDescription {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+/* GRID + FIELD */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.input,
+.textarea,
+.select {
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  background-color: #fff;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+/* BUTTON GROUP */
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.submitButton {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: #fff;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  min-width: 130px;
+}
+
+.submitButton:hover {
+  background: linear-gradient(90deg, #1d4ed8, #2563eb);
+  transform: translateY(-1px);
+}
+
+.outlineButton {
+  border: 1px solid #d1d5db;
+  background: #fff;
+  color: #111827;
+  transition: all 0.25s ease;
+}
+
+.outlineButton:hover {
+  background: #f9fafb;
+}
+
+/* ERROR */
+.error {
+  font-size: 0.875rem;
+  color: #dc2626;
+  margin-top: -0.5rem;
+}
+
+/* SUCCESS ALERT */
+.success {
+  font-size: 0.9rem;
+  color: #16a34a;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

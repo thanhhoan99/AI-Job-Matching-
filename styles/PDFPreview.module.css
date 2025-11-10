@@ -1,0 +1,117 @@
+.previewButton {
+  transition: all 0.2s ease-in-out;
+  border-color: #d0d0d0;
+}
+
+.previewButton:hover {
+  background-color: #f8fafc;
+  border-color: #b0b0b0;
+}
+
+/* Hộp dialog */
+.dialogContent {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.dialogHeader {
+  border-bottom: 1px solid #f1f1f1;
+  background-color: #fafafa;
+  padding: 0.75rem 1rem;
+}
+
+.dialogTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialogTitleText {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+/* Toolbar buttons */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbarBtn {
+  border-color: #d1d5db;
+  transition: all 0.15s ease-in-out;
+}
+
+.toolbarBtn:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+/* Nút đóng (X) */
+.closeBtn {
+  color: #6b7280;
+  transition: color 0.2s ease-in-out;
+}
+
+.closeBtn:hover {
+  color: #111827;
+}
+
+/* Khu vực xem trước */
+.previewWrapper {
+  position: relative;
+  flex: 1;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+/* Iframe */
+.previewFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Overlay khi loading */
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.loadingIcon {
+  color: #2563eb;
+}
+
+/* Footer */
+.footer {
+  border-top: 1px solid #f3f4f6;
+  padding: 0.75rem 1rem;
+  text-align: center;
+}
+
+.footerText {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+/* Animation nhỏ */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
