@@ -280,6 +280,7 @@ interface MatchingResult {
   experience_gap: {
     required_years: number;
     actual_years: number;
+    actual_months: number;
     meets_requirement: boolean;
   };
   title_analysis: {
@@ -300,6 +301,19 @@ interface CVMatchingProps {
   applicantId: string;
   onMatchResult?: (result: MatchingResult) => void;
 }
+
+export function formatExperience(years: number) {
+  if (!years || years <= 0) return "Chưa có kinh nghiệm";
+
+  const totalMonths = Math.round(years * 12);
+  const year = Math.floor(totalMonths / 12);
+  const month = totalMonths % 12;
+
+  if (year > 0 && month > 0) return `${year} năm ${month} tháng`;
+  if (year > 0) return `${year} năm`;
+  return `${month} tháng`;
+}
+
 
 export function CVJobMatching({ cvData, jobId, jobDetails, applicantId, onMatchResult }: CVMatchingProps) {
   const [matchingResult, setMatchingResult] = useState<MatchingResult | null>(null);
@@ -474,7 +488,20 @@ export function CVJobMatching({ cvData, jobId, jobDetails, applicantId, onMatchR
             </div>
             <div className={styles.experienceItem}>
               <div className={styles.experienceLabel}>Của bạn</div>
-              <div className={styles.experienceValue}>{matchingResult.experience_gap.actual_years} năm</div>
+       <div className={styles.experienceValue}>
+  {/* {matchingResult.experience_gap.actual_months < 12
+    ? `${matchingResult.experience_gap.actual_months} tháng`
+    : `${matchingResult.experience_gap.actual_years} năm`} */}
+  {formatExperience(
+    matchingResult.experience_gap.actual_years 
+    
+  )}
+</div>
+
+
+
+
+
             </div>
             <div className={styles.experienceItem}>
               <div className={styles.experienceLabel}>Trạng thái</div>

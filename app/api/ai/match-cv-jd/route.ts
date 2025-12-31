@@ -6,6 +6,49 @@ import { createClient } from "@/lib/supabase/server";
 import { google } from "@ai-sdk/google"
 import { NextResponse } from "next/server";
 
+
+// function calculateYearsOfExperience(experience: any[] = []) {
+//   let totalMonths = 0;
+
+//   experience.forEach((exp) => {
+//     if (!exp.duration) return;
+
+//     // match dạng 06/2024–08/2024
+//     const match = exp.duration.match(/(\d{2})\/(\d{4})–(\d{2})\/(\d{4})/);
+//     if (!match) return;
+
+//     const [, sm, sy, em, ey] = match.map(Number);
+//     totalMonths += (ey - sy) * 12 + (em - sm);
+//   });
+
+//   // Intern thì ít nhất cho 0.3 năm để AI hiểu
+//   return totalMonths > 0
+//     ? Math.round((totalMonths / 12) * 10) / 10
+//     : 0;
+// }
+
+function calculateExperience(experience: any[] = []) {
+  let totalMonths = 0;
+
+  experience.forEach((exp) => {
+    if (!exp.duration) return;
+
+    // match dạng 06/2024–08/2024
+    const match = exp.duration.match(/(\d{2})\/(\d{4})–(\d{2})\/(\d{4})/);
+    if (!match) return;
+
+    const [, sm, sy, em, ey] = match.map(Number);
+    totalMonths += (ey - sy) * 12 + (em - sm) + 1;
+  });
+
+  return {
+    total_months: totalMonths,
+    total_years: Math.round((totalMonths / 12) * 10) / 10,
+  };
+}
+
+
+
 const matchResultSchema = z.object({
   match_score: z.number().min(0).max(100),
   detailed_breakdown: z.object({
@@ -20,6 +63,7 @@ const matchResultSchema = z.object({
   experience_gap: z.object({
     required_years: z.number(),
     actual_years: z.number(),
+     actual_months: z.number(), 
     meets_requirement: z.boolean(),
   }),
   title_analysis: z.object({
@@ -46,6 +90,12 @@ export async function POST(req: Request) {
 
     // THÊM requirements và skillsRequired vào đây
     const { cvData, jobDescription, jobTitle, requirements, skillsRequired } = await req.json();
+//     const experienceList = cvData.experience || [];
+// const yearsOfExperience = calculateYearsOfExperience(experienceList);
+const experienceList = cvData.experience || [];
+const experience = calculateExperience(experienceList);
+
+
 
     if (!cvData || !jobDescription) {
       return NextResponse.json(
@@ -61,13 +111,27 @@ export async function POST(req: Request) {
       model: google("gemini-2.5-flash"),
       schema: matchResultSchema,
       prompt: `Phân tích chuyên sâu độ phù hợp giữa CV và Mô tả Công việc (JD).
+      - Khoảng cách kinh nghiệm:
+  + required_years: số năm yêu cầu
+  + actual_years: số năm kinh nghiệm thực tế (làm tròn 1 chữ số)
+  + actual_months: số tháng kinh nghiệm thực tế (số nguyên)
+  + meets_requirement: true/false
+
 
 THÔNG TIN CV:
 - Kỹ năng: ${cvData.skills?.join(", ") || "Không có"}
-- Kinh nghiệm: ${cvData.years_of_experience || 0} năm
+- Kinh nghiệm: ${experience.total_years} năm (${experience.total_months} tháng)
 - Vị trí hiện tại: ${cvData.current_position || "Không có"}
 - Học vấn: ${cvData.education?.map((edu: any) => edu.degree).join(", ") || "Không có"}
-- Kinh nghiệm làm việc: ${cvData.work_experience?.map((exp: any) => `${exp.position} tại ${exp.company}`).join(", ") || "Không có"}
+- Kinh nghiệm làm việc:
+${
+  experienceList.length
+    ? experienceList.map(
+        (exp: any) =>
+          `${exp.position} (${exp.duration}) tại ${exp.company}`
+      ).join(", ")
+    : "Không có"
+}
 - Ngành nghề: ${cvData.industry || "Không xác định"}
 
 MÔ TẢ CÔNG VIỆC:

@@ -618,6 +618,7 @@ import { CVJobMatching } from "./cv-job-matching"
 import { BestCVSuggestion } from "./best-cv-suggestion"
 import styles from '../../styles/ApplyButton.module.css';
 import { useTrackBehavior } from "@/hooks/useTrackBehavior"
+import { toast } from "react-toastify"
 
 interface ApplyButtonProps {
   jobId: string
@@ -906,9 +907,119 @@ export function ApplyButton({ jobId, applicantId, hasApplied ,compact = false,on
       console.log(`✅ Tracked apply for job: ${jobId}`)
        onApplySuccess?.()
 
+
+       // === THÊM ĐOẠN CODE GỬI EMAIL CHO HR TẠI ĐÂY ===
+    try {
+      // Lấy thông tin job và employer để gửi email
+      const { data: jobData } = await supabase
+        .from("job_postings")
+        .select(`
+          title,
+          employer_profiles (
+            company_name,
+            contact_email,
+            user_id,
+            profiles (
+              email,
+              full_name
+            )
+          )
+        `)
+        .eq("id", jobId)
+        .single()
+
+      if (jobData) {
+        const jobTitle = jobData.title
+        const companyName = jobData.employer_profiles?.company_name || "Công ty"
+        const employerEmail = jobData.employer_profiles?.contact_email || 
+                              jobData.employer_profiles?.profiles?.email
+        
+        // Lấy thông tin ứng viên
+        const { data: applicantData } = await supabase
+          .from("applicant_profiles")
+          .select(`
+            cv_parsed_data,
+            current_position,
+            years_of_experience,
+            profiles (
+              full_name,
+              email
+            )
+          `)
+          .eq("id", applicantId)
+          .single()
+
+        const applicantName = applicantData?.profiles?.full_name || 
+                             applicantData?.cv_parsed_data?.full_name || 
+                             "Ứng viên"
+        const applicantEmail = applicantData?.profiles?.email || 
+                              applicantData?.cv_parsed_data?.email || 
+                              "Chưa có email"
+        const applicantPosition = applicantData?.current_position || "Chưa có"
+        const applicantExperience = applicantData?.years_of_experience || 0
+
+        // Chỉ gửi email nếu có employer email
+        if (employerEmail) {
+          // Gửi email trực tiếp qua API
+          const emailResponse = await fetch('/api/send-email-direct', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              to: employerEmail,
+              type: 'new_application',
+              data: {
+                employer_name: jobData.employer_profiles?.profiles?.full_name || "Nhà tuyển dụng",
+                company_name: companyName,
+                job_title: jobTitle,
+                applicant_name: applicantName,
+                applicant_email: applicantEmail,
+                applicant_position: applicantPosition,
+                applicant_experience: applicantExperience,
+                application_id: application.id,
+                applied_at: new Date().toISOString(),
+                cv_url: cvUrl
+              }
+            })
+          })
+
+          if (!emailResponse.ok) {
+            console.error("Failed to send email to HR")
+          } else {
+            console.log("✅ Email notification sent to HR")
+          }
+        }
+
+        // Cũng gửi email xác nhận cho ứng viên (tùy chọn)
+        if (applicantEmail) {
+          const applicantEmailResponse = await fetch('/api/send-email-direct', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              to: applicantEmail,
+              type: 'application_confirmation',
+              data: {
+                applicant_name: applicantName,
+                job_title: jobTitle,
+                company_name: companyName,
+                application_id: application.id,
+                applied_at: new Date().toISOString(),
+                application_status: "pending"
+              }
+            })
+          })
+
+          if (applicantEmailResponse.ok) {
+            console.log("✅ Confirmation email sent to applicant")
+          }
+        }
+      }
+    } catch (emailError) {
+      console.error("Error sending application emails:", emailError)
+      // Không throw error để không ảnh hưởng đến quá trình ứng tuyển
+    }
       
       // Thành công
-      alert("Ứng tuyển thành công!")
+      toast.success("Ứng tuyển thành công!")
       setOpen(false)
       setUploadedCV(null)
       setCoverLetter("")

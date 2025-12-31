@@ -30,6 +30,7 @@ export function ProfileForm({ profile, applicantProfile }: ProfileFormProps) {
   const [formData, setFormData] = useState({
     full_name: profile?.full_name || "",
     phone: profile?.phone || "",
+    email: profile?.email || "",
     bio: applicantProfile?.bio || "",
     current_position: applicantProfile?.current_position || "",
     years_of_experience: applicantProfile?.years_of_experience || 0,
@@ -63,6 +64,7 @@ export function ProfileForm({ profile, applicantProfile }: ProfileFormProps) {
         .update({
           full_name: formData.full_name,
           phone: formData.phone,
+          email: formData.email,
           updated_at: new Date().toISOString(),
         })
         .eq("id", user.id)
@@ -180,6 +182,16 @@ export function ProfileForm({ profile, applicantProfile }: ProfileFormProps) {
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
               />
             </div>
+            <div className="space-y-2">
+              <Label htmlFor="email">Email</Label>
+              <Input
+                id="email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+            </div>
+            
           </div>
 
           <div className="space-y-2">

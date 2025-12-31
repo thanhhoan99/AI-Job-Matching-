@@ -180,7 +180,17 @@ export interface Payment {
   paid_at: string | null
   created_at: string
 }
-
+export interface ApplicationStatusHistory {
+  id: string
+  application_id: string
+  old_status: ApplicationStatus
+  new_status: ApplicationStatus
+  changed_by: string | null
+  notes: string | null
+  metadata: any
+  created_at: string
+  profile?: Profile | null
+}
 export interface Notification {
   id: string
   user_id: string
